@@ -48,7 +48,7 @@
 
 ## API 명세
 
-다음 링크를 참고한다.
+다음 링크의 API 명세를 준수한다.
 
 https://documenter.getpostman.com/view/32570206/2s9YypFP22
 
