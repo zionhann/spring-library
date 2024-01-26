@@ -52,6 +52,15 @@
 
 https://documenter.getpostman.com/view/32570206/2s9YypFP22
 
+## 과제 진행방식
+
+- 과제는 이 저장소를 Fork & Clone 해 시작한다
+- [멋사 컨벤션](https://github.com/LikeLionHGU)을 준수하여 버전관리를 한다.
+- 구현이 완료되면 이 저장소에 Pull Request 를 보내 과제를 제출한다.
+  - PR 제목은 `[12기] $이름 기말과제 제출합니다` 형식으로 작성한다.
+  - PR 본문에는 자유 형식으로 과제에 대한 소감(회고)을 작성한다.
+- 과제 진행중에 궁금한 점은 멋사 디스코드 채널을 통해 질문한다.
+
 ## 유의사항
 
 - `src/main/resources/` 디렉토리에 `application.yml` 파일을 추가하여 DB 접속 정보 등 필요한 설정을 추가한다.
@@ -59,3 +68,4 @@ https://documenter.getpostman.com/view/32570206/2s9YypFP22
 - API 명세에 정의된 API 외에는 추가로 정의하지 않는다.
 - 패키지를 통해 클래스를 적절히 분리한다.
 - 예외 처리는 각자 판단하여 구현한다.
+- 포스트맨을 통해 API 요청에 대한 응답이 정상적으로 이루어지는지 확인한다.
