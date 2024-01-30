@@ -16,9 +16,9 @@ public class MemberService {
 
     public Long addMember(MemberDto dto) {
         Member member = Member.create(dto);
-        memberRepository.save(member);
+        Member saved = memberRepository.save(member);
 
-        return member.getMemberId();
+        return saved.getMemberId();
     }
 
     public List<MemberDto> getAllMembers() {
