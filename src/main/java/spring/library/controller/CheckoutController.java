@@ -55,4 +55,10 @@ public class CheckoutController {
     checkoutService.returnBook(checkOutId);
     return ResponseEntity.ok().build();
   }
+
+  @PatchMapping("/{checkOutId}/renewal")
+  public ResponseEntity<Void> renewBook(@PathVariable Long checkOutId) {
+    checkoutService.renewBook(checkOutId);
+    return ResponseEntity.ok().build();
+  }
 }

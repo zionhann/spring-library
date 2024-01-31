@@ -52,4 +52,11 @@ public class CheckoutService {
         checkoutRepository.findById(checkOutId).orElseThrow(CheckoutNotFoundException::new);
     checkout.returnBook();
   }
+
+  @Transactional
+  public void renewBook(Long checkOutId) {
+    Checkout checkout =
+        checkoutRepository.findById(checkOutId).orElseThrow(CheckoutNotFoundException::new);
+    checkout.renewBook();
+  }
 }
