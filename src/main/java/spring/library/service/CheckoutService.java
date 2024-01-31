@@ -3,10 +3,12 @@ package spring.library.service;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import spring.library.domain.Book;
 import spring.library.domain.Checkout;
 import spring.library.domain.Member;
 import spring.library.exception.BookNotFoundException;
+import spring.library.exception.CheckoutNotFoundException;
 import spring.library.exception.MemberNotFoundException;
 import spring.library.repository.BookRepository;
 import spring.library.repository.CheckoutRepository;
@@ -42,5 +44,12 @@ public class CheckoutService {
             .orElseThrow(MemberNotFoundException::new);
 
     return member.getCheckouts();
+  }
+
+  @Transactional
+  public void returnBook(Long checkOutId) {
+    Checkout checkout =
+        checkoutRepository.findById(checkOutId).orElseThrow(CheckoutNotFoundException::new);
+    checkout.returnBook();
   }
 }

@@ -21,4 +21,8 @@ public enum Feature {
         .findFirst()
         .orElseThrow(FeatureNotFoundException::new);
   }
+
+  public long getCheckoutDuration() {
+    return maxCount;
+  }
 }

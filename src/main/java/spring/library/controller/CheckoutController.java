@@ -49,4 +49,10 @@ public class CheckoutController {
 
     return ResponseEntity.ok(res);
   }
+
+  @PatchMapping("/{checkOutId}/return")
+  public ResponseEntity<Void> returnBook(@PathVariable Long checkOutId) {
+    checkoutService.returnBook(checkOutId);
+    return ResponseEntity.ok().build();
+  }
 }

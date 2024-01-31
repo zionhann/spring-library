@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import spring.library.exception.IllegalReturnException;
 
 @Entity
 @Builder
@@ -20,6 +21,7 @@ public class Checkout {
 
   private LocalDateTime checkoutDate;
   private LocalDateTime dueDate;
+  private LocalDateTime returnDate;
   private boolean isReturned;
   private boolean isRenewed;
 
@@ -36,9 +38,18 @@ public class Checkout {
         .member(member)
         .book(book)
         .checkoutDate(LocalDateTime.now())
-        .dueDate(LocalDateTime.now().plusDays(10))
+        .dueDate(LocalDateTime.now().plusDays(member.getCheckoutDuration()))
         .isReturned(false)
         .isRenewed(false)
         .build();
+  }
+
+  public void returnBook() {
+    if (isReturned()) {
+      throw new IllegalReturnException();
+    }
+    this.isReturned = true;
+    this.returnDate = LocalDateTime.now();
+    this.book.changeStatus("대출가능");
   }
 }
