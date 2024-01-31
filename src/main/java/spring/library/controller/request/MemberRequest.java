@@ -12,4 +12,10 @@ public class MemberRequest {
     private String feature;
     private String email;
     private String phoneNumber;
+
+    @Getter
+    @NoArgsConstructor
+    public static class IdOnly {
+        private Long memberId;
+    }
 }

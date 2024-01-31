@@ -38,4 +38,12 @@ public class Book {
                 .status("대출가능")
                 .build();
     }
+
+    public boolean isNotAvailable() {
+        return this.status.equals("대출중");
+    }
+
+    public void changeStatus(String status) {
+        this.status = status;
+    }
 }
