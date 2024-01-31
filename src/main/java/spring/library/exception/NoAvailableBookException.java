@@ -2,6 +2,6 @@ package spring.library.exception;
 
 public class NoAvailableBookException extends RuntimeException {
   public NoAvailableBookException() {
-    super("대출 가능한 도서가 없습니다.");
+    super("이미 대출중인 도서입니다.");
   }
 }

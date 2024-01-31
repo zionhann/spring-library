@@ -31,7 +31,7 @@ public class MemberDto {
         .memberId(member.getMemberId())
         .name(member.getName())
         .idNumber(member.getIdNumber())
-        .feature(member.getFeature())
+        .feature(member.getFeature().getKor())
         .email(member.getEmail())
         .phoneNumber(member.getPhoneNumber())
         .build();
