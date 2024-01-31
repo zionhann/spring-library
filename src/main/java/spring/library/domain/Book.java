@@ -39,6 +39,16 @@ public class Book {
         .build();
   }
 
+  public void update(BookDto dto) {
+    this.bookId = dto.getBookId();
+    this.title = dto.getTitle();
+    this.author = dto.getAuthor();
+    this.publisher = dto.getPublisher();
+    this.publicationYear = dto.getPublicationYear();
+    this.classification = dto.getClassification();
+    this.status = dto.getStatus();
+  }
+
   public boolean isNotAvailable() {
     return this.status.equals("대출중");
   }

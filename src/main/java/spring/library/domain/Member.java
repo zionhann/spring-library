@@ -41,6 +41,7 @@ public class Member {
         .build();
   }
 
+
   public Checkout checkout(Book book) {
     validateCheckout(book);
     book.changeStatus("대출중");
@@ -60,5 +61,17 @@ public class Member {
 
   private boolean isCheckoutLimit() {
     return checkouts.size() == feature.getMaxCount();
+  }
+
+  public void update(MemberDto dto) {
+    this.name = dto.getName();
+    this.idNumber = dto.getIdNumber();
+    this.feature = Feature.findByName(dto.getFeature());
+    this.email = dto.getEmail();
+    this.phoneNumber = dto.getPhoneNumber();
+  }
+
+  public long getCheckoutDuration() {
+    return feature.getCheckoutDuration();
   }
 }

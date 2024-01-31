@@ -21,6 +21,7 @@ public class BookController {
   public ResponseEntity<Void> addBook(@RequestBody BookRequest request) {
     BookDto dto = BookDto.of(request);
     Long bookId = bookService.addBook(dto);
+
     URI uri = URI.create("/books/" + bookId);
 
     return ResponseEntity.created(uri).build();
@@ -32,5 +33,20 @@ public class BookController {
     BookListResponse response = new BookListResponse(books);
 
     return ResponseEntity.ok(response);
+  }
+
+  @PatchMapping("/{bookId}")
+  public ResponseEntity<Void> editBook(
+      @PathVariable Long bookId, @RequestBody BookRequest request) {
+    BookDto dto = BookDto.of(request);
+    bookService.editBook(dto, bookId);
+
+    return ResponseEntity.ok().build();
+  }
+
+  @DeleteMapping("/{bookId}")
+  public ResponseEntity<Void> deleteBook(@PathVariable Long bookId) {
+    bookService.deleteBook(bookId);
+    return ResponseEntity.ok().build();
   }
 }
