@@ -1,14 +1,12 @@
-package spring.library.controller.response;
+package spring.library.controller.response.checkout;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import spring.library.domain.Checkout;
 
 @Getter
 @NoArgsConstructor
-public class CheckoutResponse {
+public class CurrentCheckoutResponse extends CheckoutResponse {
   private Long checkOutId;
   private String title;
   private String author;
@@ -16,23 +14,12 @@ public class CheckoutResponse {
   private String dueDate;
   private int renewalCount;
 
-  public CheckoutResponse(Checkout checkout) {
+  public CurrentCheckoutResponse(Checkout checkout) {
     this.checkOutId = checkout.getCheckoutId();
     this.title = checkout.getBook().getTitle();
     this.author = checkout.getBook().getAuthor();
     this.checkOutDate = formatDateTime(checkout.getCheckoutDate());
     this.dueDate = formatDateTime(checkout.getDueDate());
-    this.renewalCount = getRenewalCount(checkout);
-  }
-
-  private String formatDateTime(LocalDateTime dateTime) {
-    return DateTimeFormatter.ofPattern("yyyy-MM-dd").format(dateTime);
-  }
-
-  private int getRenewalCount(Checkout checkout) {
-    if (checkout.isRenewed()) {
-      return 1;
-    }
-    return 0;
+    this.renewalCount = countRenewal(checkout);
   }
 }

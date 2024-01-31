@@ -31,6 +31,11 @@ public class CheckoutService {
   }
 
   public List<Checkout> getCheckoutsOf(Long memberId) {
+    Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+    return checkoutRepository.findAllByMemberAndReturned(member, false);
+  }
+
+  public List<Checkout> getCheckoutHistoryOf(Long memberId) {
     Member member =
         memberRepository
             .findAllByIdWithCheckouts(memberId)

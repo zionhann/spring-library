@@ -2,11 +2,15 @@ package spring.library.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import spring.library.controller.request.MemberRequest;
-import spring.library.controller.response.CheckoutListResponse;
+import spring.library.controller.response.checkout.CheckoutListResponse;
+import spring.library.controller.response.checkout.CheckoutResponse;
+import spring.library.controller.response.checkout.CurrentCheckoutResponse;
+import spring.library.controller.response.checkout.OverallCheckoutResponse;
 import spring.library.domain.Checkout;
 import spring.library.service.CheckoutService;
 
@@ -29,7 +33,19 @@ public class CheckoutController {
   @GetMapping
   public ResponseEntity<CheckoutListResponse> getCheckouts(@RequestParam Long memberId) {
     List<Checkout> checkouts = checkoutService.getCheckoutsOf(memberId);
-    CheckoutListResponse res = new CheckoutListResponse(checkouts);
+    List<CheckoutResponse> data =
+        checkouts.stream().map(CurrentCheckoutResponse::new).collect(Collectors.toList());
+    CheckoutListResponse res = new CheckoutListResponse(data);
+
+    return ResponseEntity.ok(res);
+  }
+
+  @GetMapping("/history")
+  public ResponseEntity<CheckoutListResponse> getCheckoutHistory(@RequestParam Long memberId) {
+    List<Checkout> checkouts = checkoutService.getCheckoutHistoryOf(memberId);
+    List<CheckoutResponse> data =
+        checkouts.stream().map(OverallCheckoutResponse::new).collect(Collectors.toList());
+    CheckoutListResponse res = new CheckoutListResponse(data);
 
     return ResponseEntity.ok(res);
   }
