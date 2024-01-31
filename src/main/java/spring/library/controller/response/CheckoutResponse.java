@@ -10,19 +10,19 @@ import spring.library.domain.Checkout;
 @NoArgsConstructor
 public class CheckoutResponse {
   private Long checkOutId;
+  private String title;
   private String author;
   private String checkOutDate;
   private String dueDate;
   private int renewalCount;
-  private Boolean isReturned;
 
   public CheckoutResponse(Checkout checkout) {
     this.checkOutId = checkout.getCheckoutId();
+    this.title = checkout.getBook().getTitle();
     this.author = checkout.getBook().getAuthor();
     this.checkOutDate = formatDateTime(checkout.getCheckoutDate());
     this.dueDate = formatDateTime(checkout.getDueDate());
     this.renewalCount = getRenewalCount(checkout);
-    this.isReturned = checkout.isReturned();
   }
 
   private String formatDateTime(LocalDateTime dateTime) {
