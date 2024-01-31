@@ -1,10 +1,9 @@
 package spring.library.controller.response;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import spring.library.dto.BookDto;
-
-import java.util.List;
 
 @Getter
 @NoArgsConstructor

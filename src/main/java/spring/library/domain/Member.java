@@ -1,9 +1,8 @@
 package spring.library.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.*;
 import spring.library.dto.MemberDto;
 import spring.library.exception.NoAvailableBookException;
@@ -25,6 +24,9 @@ public class Member {
   private String email;
   private String phoneNumber;
 
+  @OneToMany(mappedBy = "member")
+  private List<Checkout> checkouts = new ArrayList<>();
+
   public static Member create(MemberDto dto) {
     return Member.builder()
         .name(dto.getName())
@@ -40,6 +42,9 @@ public class Member {
       throw new NoAvailableBookException();
     }
     book.changeStatus("대출중");
-    return Checkout.create(this, book);
+    Checkout checkout = Checkout.create(this, book);
+    checkouts.add(checkout);
+
+    return checkout;
   }
 }

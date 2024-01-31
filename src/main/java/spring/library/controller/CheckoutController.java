@@ -1,10 +1,13 @@
 package spring.library.controller;
 
 import java.net.URI;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import spring.library.controller.request.MemberRequest;
+import spring.library.controller.response.CheckoutListResponse;
+import spring.library.domain.Checkout;
 import spring.library.service.CheckoutService;
 
 @RestController
@@ -21,5 +24,13 @@ public class CheckoutController {
     URI uri = URI.create("/checkouts/" + checkoutId);
 
     return ResponseEntity.created(uri).build();
+  }
+
+  @GetMapping
+  public ResponseEntity<CheckoutListResponse> getCheckouts(@RequestParam Long memberId) {
+    List<Checkout> checkouts = checkoutService.getCheckoutsOf(memberId);
+    CheckoutListResponse res = new CheckoutListResponse(checkouts);
+
+    return ResponseEntity.ok(res);
   }
 }

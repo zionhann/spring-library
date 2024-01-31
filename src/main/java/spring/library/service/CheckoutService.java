@@ -1,5 +1,6 @@
 package spring.library.service;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import spring.library.domain.Book;
@@ -27,5 +28,14 @@ public class CheckoutService {
     checkoutRepository.save(checkout);
 
     return checkout.getCheckoutId();
+  }
+
+  public List<Checkout> getCheckoutsOf(Long memberId) {
+    Member member =
+        memberRepository
+            .findAllByIdWithCheckouts(memberId)
+            .orElseThrow(MemberNotFoundException::new);
+
+    return member.getCheckouts();
   }
 }
