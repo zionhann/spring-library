@@ -16,22 +16,22 @@ import java.util.List;
 @RequestMapping("/members")
 public class MemberController {
 
-    private final MemberService memberService;
+  private final MemberService memberService;
 
-    @PostMapping
-    public ResponseEntity<Void> addMember(@RequestBody MemberRequest request) {
-        MemberDto dto = MemberDto.of(request);
-        Long memberId = memberService.addMember(dto);
-        URI uri = URI.create("/members/" + memberId);
+  @PostMapping
+  public ResponseEntity<Void> addMember(@RequestBody MemberRequest request) {
+    MemberDto dto = MemberDto.of(request);
+    Long memberId = memberService.addMember(dto);
+    URI uri = URI.create("/members/" + memberId);
 
-        return ResponseEntity.created(uri).build();
-    }
+    return ResponseEntity.created(uri).build();
+  }
 
-    @GetMapping
-    public ResponseEntity<MemberListResponse> getAllMembers() {
-        List<MemberDto> members = memberService.getAllMembers();
-        MemberListResponse response = new MemberListResponse(members);
+  @GetMapping
+  public ResponseEntity<MemberListResponse> getAllMembers() {
+    List<MemberDto> members = memberService.getAllMembers();
+    MemberListResponse response = new MemberListResponse(members);
 
-        return ResponseEntity.ok(response);
-    }
+    return ResponseEntity.ok(response);
+  }
 }

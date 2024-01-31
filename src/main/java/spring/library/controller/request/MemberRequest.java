@@ -7,15 +7,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemberRequest {
 
-    private String name;
-    private int idNumber;
-    private String feature;
-    private String email;
-    private String phoneNumber;
+  private String name;
+  private int idNumber;
+  private String feature;
+  private String email;
+  private String phoneNumber;
 
-    @Getter
-    @NoArgsConstructor
-    public static class IdOnly {
-        private Long memberId;
-    }
+  @Getter
+  @NoArgsConstructor
+  public static class IdOnly {
+    private Long memberId;
+  }
 }

@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BookRequest {
 
-    private String title;
-    private String author;
-    private String publisher;
-    private int publicationYear;
-    private String classification;
+  private String title;
+  private String author;
+  private String publisher;
+  private int publicationYear;
+  private String classification;
 }

@@ -12,17 +12,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberRepository memberRepository;
+  private final MemberRepository memberRepository;
 
-    public Long addMember(MemberDto dto) {
-        Member member = Member.create(dto);
-        Member saved = memberRepository.save(member);
+  public Long addMember(MemberDto dto) {
+    Member member = Member.create(dto);
+    Member saved = memberRepository.save(member);
 
-        return saved.getMemberId();
-    }
+    return saved.getMemberId();
+  }
 
-    public List<MemberDto> getAllMembers() {
-        List<Member> members = memberRepository.findAll();
-        return members.stream().map(MemberDto::of).toList();
-    }
+  public List<MemberDto> getAllMembers() {
+    List<Member> members = memberRepository.findAll();
+    return members.stream().map(MemberDto::of).toList();
+  }
 }
