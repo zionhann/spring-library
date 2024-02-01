@@ -1,4 +1,4 @@
-package spring.library.controller.response;
+package spring.library.controller.response.book;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

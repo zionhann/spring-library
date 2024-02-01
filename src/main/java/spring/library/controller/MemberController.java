@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import spring.library.controller.request.MemberRequest;
-import spring.library.controller.response.MemberListResponse;
+import spring.library.controller.response.member.MemberListResponse;
 import spring.library.dto.MemberDto;
 import spring.library.service.MemberService;
 

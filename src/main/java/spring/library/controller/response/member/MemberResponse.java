@@ -1,4 +1,4 @@
-package spring.library.controller.response;
+package spring.library.controller.response.member;
 
 import lombok.AccessLevel;
 import lombok.Getter;

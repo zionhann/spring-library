@@ -1,4 +1,4 @@
-package spring.library.controller.response;
+package spring.library.controller.response.book;
 
 import java.util.List;
 import lombok.Getter;

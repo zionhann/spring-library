@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import spring.library.controller.request.BookRequest;
-import spring.library.controller.response.BookListResponse;
+import spring.library.controller.response.book.BookListResponse;
 import spring.library.dto.BookDto;
 import spring.library.service.BookService;
 
